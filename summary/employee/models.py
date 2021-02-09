@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from simple_history.models import HistoricalRecords
 
+
 # Create your models here.
 
 class Department(models.Model):
@@ -19,6 +20,8 @@ class Employee(models.Model):
     username = models.CharField(max_length=50, unique=True)
     email = models.CharField(max_length=100)
     department = models.ForeignKey(Department, models.DO_NOTHING)
+    salary_per_day = models.IntegerField(default=0)
+    total_working_days = models.IntegerField(default=30)
     timestamp = models.DateTimeField(default=datetime.now())
     history = HistoricalRecords()
 
